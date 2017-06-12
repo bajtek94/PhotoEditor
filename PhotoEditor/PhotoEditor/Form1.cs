@@ -15,7 +15,7 @@ namespace PhotoEditor
     public partial class Form1 : Form
     {
         bool draw = false;
-        int x, y, lx, ly = 0;
+        int x, y = 0;
         Color paintcolor;
 
         public Form1()
@@ -78,7 +78,7 @@ namespace PhotoEditor
             g.CopyFromScreen(rect.Location, Point.Empty, pictureBox1.Size);
             g.Dispose();
             SaveFileDialog s = new SaveFileDialog();
-            s.Filter = "jpg files|*jpg";
+            s.Filter = "jpg|*jpg";
             if (s.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 bmp.Save(s.FileName, ImageFormat.Jpeg);
@@ -109,8 +109,6 @@ namespace PhotoEditor
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             draw = false;
-            lx = e.X;
-            ly = e.Y;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
